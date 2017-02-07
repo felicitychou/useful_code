@@ -12,20 +12,20 @@ class Logger(object):
         self.logger = logging.getLogger(loggername)
         self.logger.setLevel(loglevel)
         
+        format = '%(asctime)s %(filename)s: %(levelname)s %(message)s'
+        datefmt = '%Y/%m/%d %H:%M:%S'
+        formatter = logging.Formatter(format,datefmt)
+        
+        # log to file
         fh = logging.FileHandler(logname)
         fh.setLevel(loglevel)
-
+        fh.setFormatter(formatter)
+        self.logger.addHandler(fh)
+        
+        # print log
         ch = logging.StreamHandler()
         ch.setLevel(loglevel)
-
-        format = '%(asctime)s %(filename)s: %(levelname)s %(message)s'
-        datefmt='%Y/%m/%d %H:%M:%S'
-        formatter = logging.Formatter(format,datefmt)
-
-        fh.setFormatter(formatter)
         ch.setFormatter(formatter)
-
-        self.logger.addHandler(fh)
         self.logger.addHandler(ch)
 
 def main():
