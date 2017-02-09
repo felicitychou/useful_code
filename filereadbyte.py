@@ -1,7 +1,11 @@
 #!/usr/bin/env Python
 # -*- coding:utf-8 -*-
 
-def  readhex(filepath,offset,end=0,len=32,dec=True):
+'''
+按字节读取文件，输出十六进制/十进制文件数据。
+'''
+
+def  filereadbyte(filepath,offset,end=0,len=32,dec=True):
     f = open(filepath ,'rb')
     f.seek(offset,0)
     result = []
