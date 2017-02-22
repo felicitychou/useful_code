@@ -17,6 +17,8 @@ Build and install Python module.
 $ pip3 install ssdeep
 
 https://python-ssdeep.readthedocs.io/en/latest/index.html
+
+slower than /usr/bin/ssdeep
 '''
 
 import ssdeep
@@ -32,4 +34,4 @@ def ssdeep_big_file(file_path, max_size=1024):
                 if not data: 
                     break
                 hash_handle.update(data)
-    return h.digest()
+    return hash_handle.digest()
