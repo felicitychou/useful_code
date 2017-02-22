@@ -2,6 +2,8 @@
 # -*- coding:utf-8 -*-
 
 ''' 
+support python2/3
+
 install ssdeep
 
 python 2
@@ -17,8 +19,6 @@ Build and install Python module.
 $ pip3 install ssdeep
 
 https://python-ssdeep.readthedocs.io/en/latest/index.html
-
-slower than /usr/bin/ssdeep
 '''
 
 import ssdeep
@@ -35,3 +35,7 @@ def ssdeep_big_file(file_path, max_size=1024):
                     break
                 hash_handle.update(data)
     return hash_handle.digest()
+
+if __name__ == '__main__':
+    print(ssdeep_file("9809ea0a8479.tar"))
+    print(ssdeep_big_file("9809ea0a8479.tar"))
