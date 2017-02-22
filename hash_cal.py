@@ -7,7 +7,6 @@ import os
 import binascii
 
 # hashlib ('md5', 'sha1', 'sha224', 'sha256', 'sha384', 'sha512')
-# base64
 # binascii.crc32
 # print '%x' % (binascii.crc32(data) & 0xffffffff)
 
