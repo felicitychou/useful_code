@@ -1,0 +1,8 @@
+[ipip]
+dbpath=ipip/17monipdb.dat
+
+[cz88]
+dbpath=cz88/qqwry.dat
+
+[geoip]
+dbpath=geoip/GeoLite2-City.mmdb
