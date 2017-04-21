@@ -18,7 +18,7 @@ class ipip(object):
         self.IP.load(dbpath)
 
     def search(self,ip):
-        return self.IP.find(ip).split('\t')[:-1]
+        return [item.encode('GBK') for item in self.IP.find(ip).split('\t')[:-1]]
 
 
 class cz88(object):
@@ -28,6 +28,7 @@ class cz88(object):
         self.QQWry = QQWry(dbpath)
 
     def search(self,ip):
+        # str
         return self.QQWry.query(ip)
 
 class geoip(object):
@@ -46,6 +47,8 @@ class geoip(object):
             return ''
 
     def getsubdivisions(self,ip):
+        if not self.reader.get(ip).get('subdivisions',None):
+            return ''
         for lang in self.langs:
             subdivisions = self.reader.get(ip)['subdivisions'][0]['names'].get(lang,None)
             if subdivisions:
@@ -54,6 +57,8 @@ class geoip(object):
             return ''
     
     def getcity(self,ip):
+        if not self.reader.get(ip).get('city',None):
+                return ''
         for lang in self.langs:
             city = self.reader.get(ip)['city']['names'].get(lang,None)
             if city:
@@ -65,4 +70,4 @@ class geoip(object):
         country = self.getcountry(ip)
         subdivisions = self.getsubdivisions(ip)
         city = self.getcity(ip)
-        return [country.decode(),subdivisions,city]
+        return [country.encode('GBK'),subdivisions.encode('GBK'),city.encode('GBK')]
